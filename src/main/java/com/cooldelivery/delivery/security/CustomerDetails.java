@@ -8,6 +8,11 @@ import java.util.Collection;
 
 public class CustomerDetails implements UserDetails {
     private Customer customer;
+
+    public CustomerDetails(Customer customer) {
+        this.customer = customer;
+    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
@@ -20,7 +25,7 @@ public class CustomerDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return customer.getLogin();
+        return customer.getUsername();
     }
 
     @Override
