@@ -60,6 +60,6 @@ public class Customer {
 
     @Override
     public String toString() {
-        return getIdCustomer() + ". " + getFullName() + ", " + getAge() + "(" + orders.size() + ")";
+        return getIdCustomer() + ". " + getFullName() + ", " + getAge();
     }
 }

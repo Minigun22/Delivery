@@ -20,7 +20,7 @@ public class CustomerController {
     @GetMapping()
     public String showAll(Model model){
         model.addAttribute("customers", customerService.findAll());
-        return "customers/show";
+        return "customer/showall";
     }
 
 }

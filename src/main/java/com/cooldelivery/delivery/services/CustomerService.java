@@ -3,6 +3,7 @@ package com.cooldelivery.delivery.services;
 import com.cooldelivery.delivery.modells.customer.Customer;
 import com.cooldelivery.delivery.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -15,6 +16,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    @Transactional
     public void save(Customer user){
         customerRepository.save(user);
     }
