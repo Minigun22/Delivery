@@ -1,7 +1,7 @@
 package com.cooldelivery.delivery.modells.order;
 
 import com.cooldelivery.delivery.modells.food.Food;
-import com.cooldelivery.delivery.modells.user.User;
+import com.cooldelivery.delivery.modells.customer.Customer;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -29,8 +29,8 @@ public class Order {
     @Size(max = 800,message = "Назва замовлення має бути від 0 до 800 символів")
     private String description;
     @ManyToOne
-    @JoinColumn(name="user_id", referencedColumnName = "user_id")
-    private User user;
+    @JoinColumn(name="customer_id", referencedColumnName = "customer_id")
+    private Customer customer;
     @ManyToMany
     @JoinTable(
             name = "order_food",
@@ -39,9 +39,9 @@ public class Order {
     )
     private List<Food> foods;
 
-    public Order(String name, String description, User user) {
+    public Order(String name, String description, Customer user) {
         this.name = name;
         this.description = description;
-        this.user = user;
+        this.customer = user;
     }
 }

@@ -1,9 +1,9 @@
 package com.cooldelivery.delivery.repositories;
 
-import com.cooldelivery.delivery.modells.user.User;
+import com.cooldelivery.delivery.modells.customer.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Integer> {
+public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 }

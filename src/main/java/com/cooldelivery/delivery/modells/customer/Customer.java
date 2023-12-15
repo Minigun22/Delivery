@@ -1,4 +1,4 @@
-package com.cooldelivery.delivery.modells.user;
+package com.cooldelivery.delivery.modells.customer;
 
 import com.cooldelivery.delivery.modells.order.Order;
 import jakarta.persistence.*;
@@ -17,12 +17,12 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "customer")
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="user_id")
-    private int idUser;
+    @Column(name="customer_id")
+    private int idCustomer;
     @Column(name = "name")
     @Size(min = 2,max = 100, message = "Ім'я має бути від 2 до 100 символів")
     @NotEmpty
@@ -36,11 +36,11 @@ public class User {
     @Column(name = "age")
     @NotEmpty
     private int age;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "customer")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Order> orders;
 
-    public User(String name, String surname, int age) {
+    public Customer(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -52,6 +52,6 @@ public class User {
 
     @Override
     public String toString() {
-        return getIdUser() + ". " + getFullName() + ", " + getAge() + "(" + orders.size() + ")";
+        return getIdCustomer() + ". " + getFullName() + ", " + getAge() + "(" + orders.size() + ")";
     }
 }
