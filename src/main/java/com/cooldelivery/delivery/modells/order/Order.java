@@ -22,7 +22,7 @@ public class Order {
     @Column(name = "order_id")
     private int idOrder;
     @Column(name = "name")
-    @NotEmpty
+    @NotEmpty(message = "Повинна бути назва")
     @Size(min = 2,max = 100,message = "Назва замовлення має бути від 2 до 100 символів")
     private String name;
     @Column(name = "description")

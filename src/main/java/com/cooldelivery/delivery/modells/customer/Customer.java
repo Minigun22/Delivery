@@ -25,16 +25,24 @@ public class Customer {
     private int idCustomer;
     @Column(name = "name")
     @Size(min = 2,max = 100, message = "Ім'я має бути від 2 до 100 символів")
-    @NotEmpty
+    @NotEmpty(message = "Повинне бути ім'я")
     private String name;
     @Column(name = "surname")
     @Size(min = 2,max = 100, message = "Прізвище має бути від 2 до 100 символів")
-    @NotEmpty
+    @NotEmpty(message = "Повинне бути прізвище")
     private String surname;
+    @Column(name = "login")
+    @NotEmpty(message = "Повинен бути логін")
+    @Size(min = 2, max = 50, message = "Логін повинен бути від 2 до 50 символів")
+    private String username;
+    @Column(name = "password")
+    @Size(min = 8,max = 100,message = "Пароль має бути розміром від 8 да 100 символів")
+    @NotEmpty(message = "Повинен бути пароль")
+    private String password;
     @Min(value = 10, message = "Вік має бути більшим ніж 10")
     @Max(value = 100, message = "Вік має бути меншим ніж 100")
     @Column(name = "age")
-    @NotEmpty
+    @NotEmpty(message = "Повинний бути вік")
     private int age;
     @OneToMany(mappedBy = "customer")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
