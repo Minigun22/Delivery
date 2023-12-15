@@ -4,16 +4,21 @@ import com.cooldelivery.delivery.modells.customer.Customer;
 import com.cooldelivery.delivery.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.*;
+
 @Service
 public class CustomerService {
 
-    private final CustomerRepository userRepository;
+    private final CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepository userRepository) {
-        this.userRepository = userRepository;
+    public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     public void save(Customer user){
-        userRepository.save(user);
+        customerRepository.save(user);
+    }
+    public List<Customer> findAll(){
+        return customerRepository.findAll();
     }
 }
