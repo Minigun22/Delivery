@@ -23,4 +23,7 @@ public class CustomerService {
     public List<Customer> findAll(){
         return customerRepository.findAll();
     }
+    public Optional<Customer> loadUserByUsername(String username){
+        return customerRepository.findByUsername(username);
+    }
 }

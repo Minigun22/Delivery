@@ -42,7 +42,6 @@ public class Customer {
     @Min(value = 10, message = "Вік має бути більшим ніж 10")
     @Max(value = 100, message = "Вік має бути меншим ніж 100")
     @Column(name = "age")
-    @NotEmpty(message = "Повинний бути вік")
     private int age;
     @OneToMany(mappedBy = "customer")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
