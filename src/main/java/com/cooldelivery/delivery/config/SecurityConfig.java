@@ -13,6 +13,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -58,10 +59,11 @@ public class SecurityConfig {
 
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(customerDetailsService);
+        auth.userDetailsService(customerDetailsService)
+                .passwordEncoder(getPasswordEncoder());
     }
     @Bean
-    public PasswordEncoder hetPasswordEncoder(){
-        return NoOpPasswordEncoder.getInstance();
+    public PasswordEncoder getPasswordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 }
