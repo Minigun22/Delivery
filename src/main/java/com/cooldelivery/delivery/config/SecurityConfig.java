@@ -44,8 +44,9 @@ public class SecurityConfig {
 
         http.csrf(Customizer.withDefaults())
                 .authorizeHttpRequests((requests) -> requests
+                        .requestMatchers("/showall").hasRole("ADMIN")
                         .requestMatchers("/","/home","/error","/registration").permitAll()
-                        .anyRequest().authenticated()
+                        .anyRequest().hasAnyRole("USER","ADMIN")
                 )
                 .formLogin((form) -> form
                         .loginPage("/login")

@@ -1,6 +1,7 @@
 package com.cooldelivery.delivery.services;
 
 import com.cooldelivery.delivery.modells.customer.Customer;
+import com.cooldelivery.delivery.modells.customer.Roles;
 import com.cooldelivery.delivery.repositories.CustomerRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ public class CustomerService {
     @Transactional
     public void save(Customer user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(Roles.ROLE_USER);
         customerRepository.save(user);
     }
     public List<Customer> findAll(){

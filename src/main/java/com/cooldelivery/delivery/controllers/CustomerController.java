@@ -4,6 +4,7 @@ import com.cooldelivery.delivery.modells.customer.Customer;
 import com.cooldelivery.delivery.security.CustomerDetails;
 import com.cooldelivery.delivery.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -29,6 +30,11 @@ public class CustomerController {
         model.addAttribute("customer",showUserInfo());
         return "customer/show";
     }
+     @GetMapping("/showall")
+     public String showAll(Model model){
+        model.addAttribute("customers", customerService.findAll());
+        return "customer/showall";
+     }
 
     private Customer showUserInfo(){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

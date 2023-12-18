@@ -46,6 +46,9 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Order> orders;
+    @Enumerated(EnumType.STRING)
+    @Column(name="role")
+    private Roles role;
 
     public Customer(String name, String surname, int age) {
         this.name = name;
