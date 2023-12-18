@@ -7,7 +7,8 @@
 <body>
 <h1 th:text="${customer.getFullName()}"></h1>
 <h2 th:text="${customer.getAge()}"></h2>
-<a th:href="@{/logout}">
-    <button type="button">LOGOUT</button></a>
+<form th:action="@{/logout}" method="post" >
+    <div><input type="submit" value="LOGOUT"/></div>
+</form>
 </body>
 </html>
